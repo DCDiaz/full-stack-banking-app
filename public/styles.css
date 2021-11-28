@@ -1,0 +1,126 @@
+.App {
+    text-align: center;
+  }
+  
+  .App-logo {
+    height: 40vmin;
+    pointer-events: none;
+  }
+  
+  @media (prefers-reduced-motion: no-preference) {
+    .App-logo {
+      animation: App-logo-spin infinite 20s linear;
+    }
+  }
+  
+  .App-header {
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+  }
+  
+  .App-link {
+    color: #61dafb;
+  }
+  
+  @keyframes App-logo-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  
+  /* nav underline stroke */
+  /* The following nav.stroke CSS code was inspired by
+     Mahesh Ambure's codepen.io projects: https://codepen.io/maheshambure21/pen/QwXaRw.
+  */
+  nav.stroke ul li a,
+  nav.stroke ul li a:after,
+  nav.stroke ul li a:before {
+    transition: all .5s;
+  }
+  
+  nav.stroke ul li a {
+    position: relative;
+  }
+  nav.stroke ul li a:after {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 0%;
+    content: '.';
+    color: transparent;
+    background: rgba(0,215,255,.99);
+    height: 1px;
+  }
+  nav.stroke ul li a:hover:after {
+    width: 100%;
+  }
+  
+  nav.stroke ul li a {
+    transition: all 2s;
+  }
+  
+  nav.stroke ul li a:after {
+    text-align: left;
+    content: '.';
+    margin: 0;
+    opacity: 0;
+  }
+  
+  nav.stroke ul li a:hover {
+    color: rgba(0,215,255,.99) !important;
+    z-index: 1;
+  }
+  
+  nav.stroke ul li a:hover:after {
+    z-index: -10;
+    animation: fill 1s forwards;
+    -webkit-animation: fill 1s forwards;
+    -moz-animation: fill 1s forwards;
+    opacity: 1;
+  }
+  
+  nav.stroke ul li a.active-link {
+    color: rgba(0,215,255,.99) !important;
+    z-index: 1;
+  }
+  
+  nav.stroke ul li a.active-link:after {
+    animation: fill 1s forwards;
+    -webkit-animation: fill 1s forwards;
+    -moz-animation: fill 1s forwards;
+    opacity: 1;
+    width: 100%;
+  }
+  
+  .navbar-brand img {
+    background: white;
+    height: 50px;
+    padding: 5px;
+  }
+  
+  #createStatus {
+    background-color: #C00;
+    border-radius: 15px;
+    color: #FFF;
+    display: block;
+    margin-top: 15px;
+    padding: 5px 10px;
+    width: fit-content;
+  }
+
+
+  .ms-auto {
+    margin-left: auto !important;
+  }

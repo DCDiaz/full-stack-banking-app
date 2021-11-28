@@ -1,0 +1,22 @@
+{
+  "name": "littledb",
+  "version": "1.0.0",
+  "description": "lowdb sample for 1.125",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "abel@mit.edu",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "history": "^5.1.0",
+    "lowdb": "^1.0.0",
+    "mongodb": "^3.7.3",
+    "nodemon": "^2.0.15",
+    "react": "^17.0.2",
+    "react-router-dom": "^6.0.2"
+  },
+  "keywords": []
+}
