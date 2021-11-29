@@ -4,9 +4,9 @@ function Home() {
       <h1>Welcome to First National Online Bank</h1>
       <Card
         txtcolor="black"
-        header="We're First in Bad Banking!"
-        title="First National Bad Bank is here for all of your bad banking needs."
-        text="Through our web app, you can open an account, and then deposit and withdraw funds from your account. (Disclaimer: First National Bad Bank is *not* FDIC insured. Deposit your funds at your own risk.)"
+        header="We're First in Online Banking!"
+        title="First National Online Bank is here for all of your online banking needs."
+        text="Through our web app, you can open an account, and then deposit and withdraw funds from your account."
         body={(
           <>
             <p className="text-center"><img src="./broken-piggy-bank.jpg" className="img-fluid" alt="Bank logo"/></p>
