@@ -1,6 +1,7 @@
 const MongoClient = require('mongodb').MongoClient;
-// const url         = 'mongodb://localhost:27017';
-const uri         = "mongodb+srv://DSquared:GdgPK8Ezkd7q867@fs-banking-app.iadlj.mongodb.net/fs-banking-app?retryWrites=true&w=majority";
+// const url        = 'mongodb://localhost:27017';
+//const uri         = "mongodb+srv://DSquared:GdgPK8Ezkd7q867@fs-banking-app.iadlj.mongodb.net/fs-banking-app?retryWrites=true&w=majority";
+const uri         = process.env.MONGODB_URI;
 let db            = null;
  
 // connect to mongo
@@ -12,7 +13,7 @@ let db            = null;
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 client.connect(err => {
   db = client.db("fs-banking-app");
-  const collection = db.collection("devices");
+  //const collection = db.collection("devices");
   // perform actions on the collection object
   client.close();
 });
