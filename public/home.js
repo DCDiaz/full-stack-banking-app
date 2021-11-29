@@ -1,7 +1,7 @@
 function Home() {
   return (
     <>
-      <h1>Welcome to First National Bad Bank</h1>
+      <h1>Welcome to First National Online Bank</h1>
       <Card
         txtcolor="black"
         header="We're First in Bad Banking!"
