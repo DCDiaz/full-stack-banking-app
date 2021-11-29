@@ -13,6 +13,7 @@ let db            = null;
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 client.connect(err => {
   db = client.db("fs-banking-app");
+  console.log("Connected successfully to db server");
   //const collection = db.collection("devices");
   // perform actions on the collection object
   client.close();
