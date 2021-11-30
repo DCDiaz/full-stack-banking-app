@@ -1,7 +1,7 @@
 const MongoClient = require('mongodb').MongoClient;
 // const url        = 'mongodb://localhost:27017';
-//const uri         = "mongodb+srv://DSquared:GdgPK8Ezkd7q867@fs-banking-app.iadlj.mongodb.net/fs-banking-app?retryWrites=true&w=majority";
-const uri         = process.env.MONGODB_URI;
+//const url         = "mongodb+srv://DSquared:GdgPK8Ezkd7q867@fs-banking-app.iadlj.mongodb.net/fs-banking-app?retryWrites=true&w=majority";
+const url         = process.env.MONGODB_URI;
 let db            = null;
  
 // connect to mongo
@@ -10,7 +10,7 @@ MongoClient.connect(url, {useUnifiedTopology: true}, function(err, client) {
     // connect to fs-banking-app database
     db = client.db('fs-banking-app');
 });
-/*const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+/*const client = new MongoClient(url, { useNewUrlParser: true, useUnifiedTopology: true });
 client.connect(err => {
   db = client.db("fs-banking-app");
   console.log("Connected successfully to db server");
