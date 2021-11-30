@@ -14,7 +14,7 @@ function Withdraw(){
   )
 }
 
-function WithdrawMsg(props){
+function WithdrawMsg(props) {
   return(<>
     <h5>Success</h5>
     <button type="submit" 
@@ -28,11 +28,11 @@ function WithdrawMsg(props){
   </>);
 }
 
-function WithdrawForm(props){
+function WithdrawForm(props) {
   const [email, setEmail]   = React.useState('');
   const [amount, setAmount] = React.useState('');
 
-  function handle(){
+  function handle() {
     fetch(`/account/update/${email}/-${amount}`)
     .then(response => response.text())
     .then(text => {

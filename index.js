@@ -16,7 +16,7 @@ app.get('/account/create/:name/:email/:password', function (req, res) {
     });*/
 
     // check if account exists
-    dal.find(req.params.email).
+    /*dal.find(req.params.email).
         then((users) => {
             // if user exists, return error message
             if(users.length > 0) {
@@ -31,7 +31,7 @@ app.get('/account/create/:name/:email/:password', function (req, res) {
                         res.send(user);            
                     });            
             }
-        });
+        });*/
 });
 
 
@@ -92,16 +92,20 @@ app.get('/account/update/:email/:amount', function (req, res) {
 
 // all accounts
 app.get('/account/all', function (req, res) {
-    /*res.send({
+    res.send({
         name: 'peter',
         email: 'peter@mit.edu',
         password: 'secret'
-    });*/
-    dal.all().
+    });
+    /*dal.all().
         then((docs) => {
             console.log(docs);
             res.send(docs);
-    });
+    });*/
+});
+
+app.get('/*', function (req, res) {
+    res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
 });
 
 let port = process.env.PORT || 3000;
