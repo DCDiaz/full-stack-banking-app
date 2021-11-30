@@ -104,10 +104,6 @@ app.get('/account/all', function (req, res) {
     });*/
 });
 
-app.get('/*', function (req, res) {
-    res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
-});
-
 let port = process.env.PORT || 3000;
 app.listen(port, function () {
     console.log(`Running on port ${port}`);
