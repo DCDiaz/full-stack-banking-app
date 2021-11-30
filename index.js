@@ -82,7 +82,6 @@ app.get('/account/findOne/:email', function (req, res) {
 app.get('/account/update/:email/:amount', function (req, res) {
 
     var amount = Number(req.params.amount);
-
     dal.update(req.params.email, amount).
         then((response) => {
             console.log(response);
