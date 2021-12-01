@@ -1,23 +1,15 @@
 const MongoClient = require('mongodb').MongoClient;
 // const url        = 'mongodb://localhost:27017';
-//const url         = "mongodb+srv://DSquared:GdgPK8Ezkd7q867@fs-banking-app.iadlj.mongodb.net/fs-banking-app?retryWrites=true&w=majority";
+//const url         = "mongodb+srv://DSquared:GdgPK8Ezkd7q867@fs-banking-app.iadlj.mongodb.net/sample_restaurants?retryWrites=true&w=majority";
 const url         = process.env.MONGODB_URI;
 let db            = null;
  
 // connect to mongo
 MongoClient.connect(url, {useUnifiedTopology: true}, function(err, client) {
     console.log("Connected successfully to db server");
-    // connect to fs-banking-app database
-    db = client.db('fs-banking-app');
+    // connect to  database
+    db = client.db('sample_restaurants');
 });
-/*const client = new MongoClient(url, { useNewUrlParser: true, useUnifiedTopology: true });
-client.connect(err => {
-  db = client.db("fs-banking-app");
-  console.log("Connected successfully to db server");
-  //const collection = db.collection("devices");
-  // perform actions on the collection object
-  client.close();
-});*/
 
 // create user account
 function create(name, email, password) {

@@ -15,8 +15,15 @@ app.get('/account/create/:name/:email/:password', function (req, res) {
         password: req.params.password
     });*/
 
+    // else create user
+    dal.create(req.params.name, req.params.email, req.params.password).
+    then((user) => {
+        console.log(user);
+        res.send(user);            
+    });   
+
     // check if account exists
-    /*dal.find(req.params.email).
+    /*.find(req.params.email).
         then((users) => {
             // if user exists, return error message
             if(users.length > 0) {
@@ -91,16 +98,16 @@ app.get('/account/update/:email/:amount', function (req, res) {
 
 // all accounts
 app.get('/account/all', function (req, res) {
-    res.send({
+    /*res.send({
         name: 'peter',
         email: 'peter@mit.edu',
         password: 'secret'
-    });
-    /*dal.all().
+    });*/
+    dal.all().
         then((docs) => {
             console.log(docs);
             res.send(docs);
-    });*/
+    });
 });
 
 let port = process.env.PORT || 3000;
