@@ -1,6 +1,4 @@
 const MongoClient = require('mongodb').MongoClient;
-// const url        = 'mongodb://localhost:27017';
-//const url         = "mongodb+srv://DSquared:GdgPK8Ezkd7q867@fs-banking-app.iadlj.mongodb.net/sample_restaurants?retryWrites=true&w=majority";
 const url         = process.env.MONGODB_URI;
 let db            = null;
  
