@@ -1,4 +1,4 @@
-function Deposit(){
+function Deposit() {
   const [show, setShow]     = React.useState(true);
   const [status, setStatus] = React.useState('');  
 
@@ -14,7 +14,7 @@ function Deposit(){
   )
 }
 
-function DepositMsg(props){
+function DepositMsg(props) {
   return (<>
     <h5>Success</h5>
     <button type="submit" 
@@ -28,7 +28,7 @@ function DepositMsg(props){
   </>);
 } 
 
-function DepositForm(props){
+function DepositForm(props) {
   const [email, setEmail]   = React.useState('');
   const [amount, setAmount] = React.useState('');
 
