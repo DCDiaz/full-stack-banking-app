@@ -5,10 +5,11 @@
     <title>Full Stack Banking App by Dave Diaz</title>
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 
-    <!-- bootstrap css -->
+    <!-- bootstrap & bootstrap table css -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/react-bootstrap-table/4.3.1/react-bootstrap-table-all.min.css" integrity="sha512-g4W7wJRxZaaFx0lUNfcsYO4d/VQQLn506GW5SNV+SZqLaCIObIpXbiqyiA2ZDyKreZMbMsdCaQeJuil8dS55Wg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    <!-- general css -->
     <link rel="stylesheet" type="text/css" href="styles.css">
 
     <!-- don't use this in production: -->
@@ -22,21 +23,44 @@
     <script src="https://unpkg.com/react/umd/react.development.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom/umd/react-dom.development.js" crossorigin></script>
     <script src="https://unpkg.com/react-router@5/umd/react-router.min.js" crossorigin></script>
-    <script src="https://unpkg.com/react-router-dom@5/umd/react-router-dom.min.js"></script>
+    <script src="https://unpkg.com/react-router-dom@5/umd/react-router-dom.min.js" crossorigin></script>
 
+    <!-- load react bootstrap table-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react-bootstrap-table/4.3.1/react-bootstrap-table.min.js" integrity="sha512-uftWh0O2mYBv72SDcCmdkUmeHf9QMebt4JUfYPm9JCkdCDNwLQRpX6KUTHlfxgdJoiKiTd1YkwGIBFpGR8DHEw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
+    <!-- load firebase authentication -->
+    <!-- <script src="https://www.gstatic.com/firebasejs/9.1.3/firebase-app.js" crossorigin></script>
+    <script src="https://www.gstatic.com/firebasejs/9.1.3/firebase-auth.js" crossorigin></script> -->
+    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-auth.js"></script>
+
     <!-- load our react components -->
-    <script src="context.js" defer type="text/babel"></script>
-    <script src="navbar.js" defer type="text/babel"></script>
-    <script src="createaccount.js" defer type="text/babel"></script>
-    <script src="login.js" defer type="text/babel"></script>
-    <script src="deposit.js" defer type="text/babel"></script>
-    <script src="withdraw.js" defer type="text/babel"></script>
-    <!-- <script src="transactions.js" defer type="text/babel"></script> -->
-    <script src="balance.js" defer type="text/babel"></script>
-    <script src="alldata.js" defer type="text/babel"></script>
-    <script src="home.js" defer type="text/babel"></script>
-    <script src="index.js" defer type="text/babel"></script>
+    <script src="context.js" type="text/babel"></script>
+    <script src="navbar.js" type="text/babel"></script>
+    <script src="createaccount.js" type="text/babel"></script>
+    <script src="login.js" type="text/babel"></script>
+    <script src="deposit.js" type="text/babel"></script>
+    <script src="withdraw.js" type="text/babel"></script>
+    <!-- <script src="transactions.js" type="text/babel"></script> -->
+    <script src="balance.js" type="text/babel"></script>
+    <script src="alldata.js" type="text/babel"></script>
+    <script src="home.js" type="text/babel"></script>
+    <script src="index.js" type="text/babel"></script>
+
+    <script type="module">
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyCq6URfbIdU3LlwdHk8_r8pzgcBAKzYWrI",
+        authDomain: "banking-app-1eecf.firebaseapp.com",
+        projectId: "banking-app-1eecf",
+        storageBucket: "banking-app-1eecf.appspot.com",
+        messagingSenderId: "800890139400",
+        appId: "1:800890139400:web:d85029b22df0fa94a772bd"
+      };
+
+      // Initialize Firebase
+      const app = firebase.initializeApp(firebaseConfig);
+    </script>
+    
   </body>
 </html>

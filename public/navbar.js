@@ -25,7 +25,10 @@ function NavBar() {
             </li>
             <li className="nav-item">
               <a className="nav-link" href="#/AllData/">All Data</a>
-            </li>          
+            </li> 
+            <li className="nav-item">
+              <span className="nav-link primary" id="loggedInStatus">Logged-Out</span>
+            </li>         
           </ul>
         </div>
       </div>
