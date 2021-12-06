@@ -1,11 +1,12 @@
 function CreateAccount() {
   const [show, setShow]     = React.useState(true);
   const [status, setStatus] = React.useState('');
+  const [loggedIn, setLoggedIn] = React.useState(false);
 
   return (
     <Card
       txtcolor="black"
-      header="Create Account"
+      header="Create an Account"
       status={status}
       body={show ? 
         <CreateForm setShow={setShow}/> : 
@@ -16,10 +17,7 @@ function CreateAccount() {
 
 function CreateMsg(props) {
   return(<>
-    <h5>Success</h5>
-    <button type="submit" 
-      className="btn btn-primary" 
-      onClick={() => props.setShow(true)}>Add another account</button>
+    <h5>Success! Your account has been created.</h5>
   </>);
 }
 
@@ -45,27 +43,38 @@ function CreateForm(props) {
     const emailInput    = document.getElementById('emailInput');
     const passwordInput = document.getElementById('passwordInput');
     const status        = document.getElementById('loggedInStatus');	
-    // mongodb
-    const url = `/account/create/${name}/${email}/${password}`;
-    (async () => {
-        var res  = await fetch(url);
-        var data = await res.json();    
-        console.log(data);        
-    })();
-    props.setShow(false);
+
     // firebase
-    const auth = firebase.auth();
-    const promise = auth.createUserWithEmailAndPassword(
+    firebase.auth().createUserWithEmailAndPassword(
       emailInput.value,
       passwordInput.value
-    );
-    promise.catch((e) => console.log(e.message));
+    )
+    .then((user) => { 
+      var user = firebase.auth().currentUser;
+      console.log(user.uid);
+      var uid = user.uid; 
+      // mongodb
+      const url = `/account/create/${name}/${email}/${uid}`;
+      (async () => {
+          var res  = await fetch(url);
+          var data = await res.json();    
+          console.log(data);        
+      })();
+      props.setShow(false);
+    }, function(error) {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      console.log('Error: ' + errorCode + ' ' + errorMessage);   
+    });
+  
   }
 
+  
   return (<>
     Name<br/>
     <input type="input" 
       className="form-control" 
+      id="nameInput"
       placeholder="Enter name" 
       value={name} 
       onChange={e => setName(e.currentTarget.value)} /><br/>

@@ -4,8 +4,8 @@ function Balance(){
 
   return (
     <Card
-      bgcolor="info"
-      header="Balance"
+      txtcolor="black"
+      header="Account Balance"
       status={status}
       body={show ?
         <BalanceForm setShow={setShow} setStatus={setStatus}/> :
@@ -30,40 +30,43 @@ function BalanceMsg(props){
 }
 
 function BalanceForm(props){
-  const [email, setEmail]   = React.useState('');
-  const [balance, setBalance] = React.useState('');  
 
-  function handle(){
-    fetch(`/account/findOne/${email}`)
-    .then(response => response.text())
-    .then(text => {
-        try {
-            const data = JSON.parse(text);
-            props.setStatus(text);
-            props.setShow(false);
-            setBalance(user.balance);
-            console.log('JSON:', data);
-        } catch(err) {
-            props.setStatus(text)
-            console.log('err:', text);
-        }
-    });
-  }
+  const ctx = React.useContext(UserContext);  
+
+  const [email, setEmail]     = React.useState(ctx.user.email);
+  const [balance, setBalance] = React.useState(0);  
+
+  fetch(`/account/findOne/${email}`)
+  .then(response => response.text())
+  .then(text => {
+      try {
+          const data = JSON.parse(text);
+          //props.setStatus(text);
+          //props.setShow(false);
+          setBalance(data.balance);
+          console.log('JSON:', data);
+      } catch(err) {
+          props.setStatus(text)
+          console.log('err:', text);
+      }
+  });
 
   return (<>
 
-    Email<br/>
+    <h5>Your balance is ${parseFloat(balance).toFixed(2)}</h5>
+
+    {/*Email<br/>
     <input type="input" 
       className="form-control" 
       placeholder="Enter email" 
       value={email} 
-      onChange={e => setEmail(e.currentTarget.value)}/><br/>
+    onChange={e => setEmail(e.currentTarget.value)}/><br/>*/}
 
-    <button type="submit" 
+    {/*<button type="submit" 
       className="btn btn-light" 
       onClick={handle}>
         Check Balance
-    </button>
+  </button>*/}
 
   </>);
 }

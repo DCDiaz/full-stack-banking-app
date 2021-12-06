@@ -3,7 +3,7 @@ function priceFormatter(cell, row){
 }
 
 function Table() {
-  const [data, setData] = React.useState('');    
+  const [data, setData] = React.useState([]);    
 
   React.useEffect(() => {
       // fetch all accounts from API (/public/index.js)
@@ -31,8 +31,8 @@ function Table() {
       <TableHeaderColumn dataField={'email'}>
         Email
       </TableHeaderColumn>
-      <TableHeaderColumn dataField={'password'}>
-        Password
+      <TableHeaderColumn dataField={'uid'}>
+        Firebase UID
       </TableHeaderColumn>
       <TableHeaderColumn dataField={'balance'} dataFormat={priceFormatter}>
         Balance
@@ -47,7 +47,7 @@ function AllData() {
       <h1>All Data</h1>
       <Card
         txtcolor="black"
-        header={'Bank Accounts'}
+        header={'All Bank Accounts'}
         body={<Table/>}
       />
     </>

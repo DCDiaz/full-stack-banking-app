@@ -4,8 +4,8 @@ function Deposit() {
 
   return (
     <Card
-      bgcolor="warning"
-      header="Deposit"
+      txtcolor="black"
+      header="Deposit Funds"
       status={status}
       body={show ? 
         <DepositForm setShow={setShow} setStatus={setStatus}/> :
@@ -23,13 +23,16 @@ function DepositMsg(props) {
           props.setShow(true);
           props.setStatus('');
       }}>
-        Deposit again
+        Make Another Deposit
     </button>
   </>);
 } 
 
 function DepositForm(props) {
-  const [email, setEmail]   = React.useState('');
+  
+  const ctx = React.useContext(UserContext);  
+
+  const [email, setEmail]   = React.useState(ctx.user.email);
   const [amount, setAmount] = React.useState('');
 
   function handle() {
@@ -50,13 +53,13 @@ function DepositForm(props) {
 
   return(<>
 
-    Email<br/>
+    {/*Email<br/>
     <input type="input" 
       className="form-control" 
       placeholder="Enter email" 
-      value={email} onChange={e => setEmail(e.currentTarget.value)}/><br/>
+    value={email} onChange={e => setEmail(e.currentTarget.value)}/><br/>*/}
       
-    Amount<br/>
+    Deposit Amount<br/>
     <input type="number" 
       className="form-control" 
       placeholder="Enter amount" 

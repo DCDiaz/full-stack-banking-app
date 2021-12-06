@@ -120,7 +120,14 @@
     width: fit-content;
   }
 
-
   .ms-auto {
     margin-left: auto !important;
+  }
+
+  .cursor-pointer {
+    cursor: pointer;
+  }
+
+  .fw-bold {
+    font-weight: bold;
   }

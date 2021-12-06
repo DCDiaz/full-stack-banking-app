@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/react-bootstrap-table/4.3.1/react-bootstrap-table-all.min.css" integrity="sha512-g4W7wJRxZaaFx0lUNfcsYO4d/VQQLn506GW5SNV+SZqLaCIObIpXbiqyiA2ZDyKreZMbMsdCaQeJuil8dS55Wg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <!-- general css -->
+    <!-- app css -->
     <link rel="stylesheet" type="text/css" href="styles.css">
 
     <!-- don't use this in production: -->
@@ -29,23 +29,20 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react-bootstrap-table/4.3.1/react-bootstrap-table.min.js" integrity="sha512-uftWh0O2mYBv72SDcCmdkUmeHf9QMebt4JUfYPm9JCkdCDNwLQRpX6KUTHlfxgdJoiKiTd1YkwGIBFpGR8DHEw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <!-- load firebase authentication -->
-    <!-- <script src="https://www.gstatic.com/firebasejs/9.1.3/firebase-app.js" crossorigin></script>
-    <script src="https://www.gstatic.com/firebasejs/9.1.3/firebase-auth.js" crossorigin></script> -->
     <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-auth.js"></script>
 
     <!-- load our react components -->
-    <script src="context.js" type="text/babel"></script>
-    <script src="navbar.js" type="text/babel"></script>
-    <script src="createaccount.js" type="text/babel"></script>
-    <script src="login.js" type="text/babel"></script>
-    <script src="deposit.js" type="text/babel"></script>
-    <script src="withdraw.js" type="text/babel"></script>
-    <!-- <script src="transactions.js" type="text/babel"></script> -->
-    <script src="balance.js" type="text/babel"></script>
-    <script src="alldata.js" type="text/babel"></script>
-    <script src="home.js" type="text/babel"></script>
-    <script src="index.js" type="text/babel"></script>
+    <script src="context.js" defer type="text/babel"></script>
+    <script src="navbar.js" defer type="text/babel"></script>
+    <script src="createaccount.js" defer type="text/babel"></script>
+    <script src="login.js" defer type="text/babel"></script>
+    <script src="deposit.js" defer type="text/babel"></script>
+    <script src="withdraw.js" defer type="text/babel"></script>
+    <script src="balance.js" defer type="text/babel"></script>
+    <script src="alldata.js" defer type="text/babel"></script>
+    <script src="home.js" defer type="text/babel"></script>
+    <script src="index.js" defer type="text/babel"></script>
 
     <script type="module">
       // Your web app's Firebase configuration
@@ -60,6 +57,39 @@
 
       // Initialize Firebase
       const app = firebase.initializeApp(firebaseConfig);
+      
+      // clear any existing log-in sessions
+      firebase.auth().signOut()
+
+      // firebase login state
+      firebase.auth().onAuthStateChanged((firebaseUser) => {
+        const loggedInStatus = document.getElementById('loggedInStatus');	
+        const depositLink     = document.getElementById('depositLink');	
+        const withdrawLink     = document.getElementById('withdrawLink');	
+        const balanceLink     = document.getElementById('balanceLink');	
+        const createLink     = document.getElementById('createLink');	
+        const loginLink      = document.getElementById('loginLink');	
+        const logoutLink     = document.getElementById('logoutLink');	
+        if (firebaseUser) {
+          console.log('Logged-In: ' + firebaseUser.email);
+          loggedInStatus.innerText = firebaseUser.email;
+          createLink.style.display = "none";
+          loginLink.style.display = "none";
+          logoutLink.style.display = "inline-block";
+          depositLink.style.display = "inline-block";
+          withdrawLink.style.display = "inline-block";
+          balanceLink.style.display = "inline-block";
+        } else {
+          console.log("Logged-Out");
+          loggedInStatus.innerText = "Logged-Out";
+          createLink.style.display = "inline-block";
+          loginLink.style.display = "inline-block";
+          logoutLink.style.display = "none";
+          depositLink.style.display = "none";
+          withdrawLink.style.display = "none";
+          balanceLink.style.display = "none";
+        }
+      });
     </script>
     
   </body>

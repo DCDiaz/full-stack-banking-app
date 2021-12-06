@@ -1,11 +1,11 @@
 function Home() {
   return (
     <>
-      <h1>Welcome to First National Online Bank</h1>
+      <h1>Welcome to The Full-Stack Bank</h1>
       <Card
         txtcolor="black"
         header="We're First in Online Banking!"
-        title="First National Online Bank is here for all of your online banking needs."
+        title="The Full-Stack Bank is here for all of your online banking needs."
         text="Through our web app, you can open an account, and then deposit and withdraw funds from your account."
         body={(
           <>

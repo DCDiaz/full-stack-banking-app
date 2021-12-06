@@ -4,8 +4,8 @@ function Withdraw() {
 
   return (
     <Card
-      bgcolor="success"
-      header="Withdraw"
+      txtcolor="black"
+      header="Withdraw Funds"
       status={status}
       body={show ? 
         <WithdrawForm setShow={setShow} setStatus={setStatus}/> :
@@ -16,20 +16,23 @@ function Withdraw() {
 
 function WithdrawMsg(props) {
   return(<>
-    <h5>Success</h5>
+    <h5>Success!</h5>
     <button type="submit" 
       className="btn btn-light" 
       onClick={() => {
         props.setShow(true);
         props.setStatus('');
       }}>
-        Withdraw again
+        Make Another Withdrawal
     </button>
   </>);
 }
 
 function WithdrawForm(props) {
-  const [email, setEmail]   = React.useState('');
+
+  const ctx = React.useContext(UserContext);  
+
+  const [email, setEmail]   = React.useState(ctx.user.email);
   const [amount, setAmount] = React.useState('');
 
   function handle() {
@@ -42,23 +45,22 @@ function WithdrawForm(props) {
             props.setShow(false);
             console.log('JSON:', data);
         } catch(err) {
-            props.setStatus('Deposit failed')
+            props.setStatus('Withdrawal failed')
             console.log('err:', text);
         }
     });
   }
 
-
   return(<>
 
-    Email<br/>
+    {/*Email<br/>
     <input type="input" 
       className="form-control" 
       placeholder="Enter email" 
       value={email} 
-      onChange={e => setEmail(e.currentTarget.value)}/><br/>
+    onChange={e => setEmail(e.currentTarget.value)}/><br/>*/}
 
-    Amount<br/>
+    Withdrawal Amount<br/>
     <input type="number" 
       className="form-control" 
       placeholder="Enter amount" 
