@@ -30,10 +30,8 @@ app.get('/account/create/:name/:email/:uid', function (req, res) {
 
 // login user 
 app.get('/account/login/:email/:password', function (req, res) {
-
     dal.find(req.params.email).
         then((user) => {
-
             // if user exists, check password
             if(user.length > 0){
                 if (user[0].password === req.params.password){
@@ -52,7 +50,6 @@ app.get('/account/login/:email/:password', function (req, res) {
 
 // find user account
 app.get('/account/find/:email', function (req, res) {
-
     dal.find(req.params.email).
         then((user) => {
             console.log(user);
@@ -62,7 +59,6 @@ app.get('/account/find/:email', function (req, res) {
 
 // find one user by email - alternative to find
 app.get('/account/findOne/:email', function (req, res) {
-
     dal.findOne(req.params.email).
         then((user) => {
             console.log(user);
@@ -73,7 +69,6 @@ app.get('/account/findOne/:email', function (req, res) {
 
 // update - deposit/withdraw amount
 app.get('/account/update/:email/:amount', function (req, res) {
-
     var amount = Number(req.params.amount);
     dal.update(req.params.email, amount).
         then((response) => {
