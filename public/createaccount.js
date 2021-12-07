@@ -33,7 +33,6 @@ function CreateForm(props) {
     // get elements
     const emailInput    = document.getElementById('emailInput');
     const passwordInput = document.getElementById('passwordInput');
-    const status        = document.getElementById('loggedInStatus');	
 
     // firebase
     firebase.auth().createUserWithEmailAndPassword(

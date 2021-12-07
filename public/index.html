@@ -64,14 +64,14 @@
       // firebase login state
       firebase.auth().onAuthStateChanged((firebaseUser) => {
         const loggedInStatus = document.getElementById('loggedInStatus');	
-        const depositLink     = document.getElementById('depositLink');	
-        const withdrawLink     = document.getElementById('withdrawLink');	
-        const balanceLink     = document.getElementById('balanceLink');	
+        const depositLink    = document.getElementById('depositLink');	
+        const withdrawLink   = document.getElementById('withdrawLink');	
+        const balanceLink    = document.getElementById('balanceLink');	
         const createLink     = document.getElementById('createLink');	
         const loginLink      = document.getElementById('loginLink');	
         const logoutLink     = document.getElementById('logoutLink');	
         if (firebaseUser) {
-          console.log('Logged-In: ' + firebaseUser.email);
+          console.log('Firebase Auth Logged-In: ' + firebaseUser.email);
           loggedInStatus.innerText = firebaseUser.email;
           createLink.style.display = "none";
           loginLink.style.display = "none";
@@ -80,7 +80,7 @@
           withdrawLink.style.display = "inline-block";
           balanceLink.style.display = "inline-block";
         } else {
-          console.log("Logged-Out");
+          console.log('Firebase Auth Logged-Out');
           loggedInStatus.innerText = "Logged-Out";
           createLink.style.display = "inline-block";
           loginLink.style.display = "inline-block";
