@@ -120,9 +120,26 @@ function LoginForm(props) {
 }
 
 function LoginMsg(props) {
-  return (
-    <h5>
-      Success! You are now logged-in.
-    </h5>
+  const ctx = React.useContext(UserContext);
+  const email = ctx.user.email;
+  const [balance, setBalance] = React.useState(ctx.user.balance); 
+
+  fetch(`/account/findOne/${email}`)
+  .then(response => response.text())
+  .then(text => {
+      try {
+          const data = JSON.parse(text);
+          setBalance(data.balance);
+          console.log('JSON:', data);
+      } catch(err) {
+          props.setStatus(text)
+          console.log('err:', text);
+      }
+  });
+
+  return (<>
+    <h5>Success! You are now logged-in.</h5>
+    <h5>Your current balance is ${parseFloat(balance).toFixed(2)}</h5>
+  </>
   );
 }

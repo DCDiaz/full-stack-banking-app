@@ -17,26 +17,17 @@ function CreateAccount() {
 
 function CreateMsg(props) {
   return(<>
-    <h5>Success! Your account has been created.</h5>
+    <h5>Success! Your account has been created, and you are now logged-in.</h5>
   </>);
 }
 
 function CreateForm(props) {
 
+  const ctx = React.useContext(UserContext);  
+
   const [name, setName]         = React.useState('');
   const [email, setEmail]       = React.useState('');
   const [password, setPassword] = React.useState('');
-
-  /*function handle() {
-    console.log(name, email, password);
-    const url = `/account/create/${name}/${email}/${password}`;
-    (async () => {
-        var res  = await fetch(url);
-        var data = await res.json();    
-        console.log(data);        
-    })();
-    props.setShow(false);
-  }*/    
 
   function handleSignUp() {
     // get elements
@@ -51,9 +42,9 @@ function CreateForm(props) {
     )
     .then((user) => { 
       var user = firebase.auth().currentUser;
-      console.log(user.uid);
+      ctx.user.email = user.email;
       var uid = user.uid; 
-      // mongodb
+      // mongodbS
       const url = `/account/create/${name}/${email}/${uid}`;
       (async () => {
           var res  = await fetch(url);
@@ -68,7 +59,6 @@ function CreateForm(props) {
     });
   
   }
-
   
   return (<>
     Name<br/>

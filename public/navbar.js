@@ -9,13 +9,13 @@ function NavBar() {
   }
    
   return(
-    <nav className="navbar navbar-expand-lg navbar-light bg-white stroke">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-primary stroke">
       <div className="container-xl">
-        <a className="navbar-brand"><img src="./bank.png" alt="Bank logo"/>Full-Stack Bank</a>
+        <a className="navbar-brand fw-bold"><img className="mr-2" src="./bank.png" alt="Bank logo"/>Full-Stack Bank</a>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
-        <div className="collapse navbar-collapse" id="navbarNav">
+        <div className="collapse navbar-collapse ml-3" id="navbarNav">
           <ul className="navbar-nav mb-2 mb-lg-0">
             <li className="nav-item" id="homeLink">
               <a className="nav-link" id="homeLinkAnchor" href="#/">Home</a>
@@ -36,15 +36,15 @@ function NavBar() {
               <a className="nav-link" href="#/AllData/">All Data</a>
             </li>*/} 
             <li className="nav-item" id="loginLink">
-              <a className="nav-link fw-bold text-success" href="#/login/">Log In</a>
+              <a className="nav-link fw-bold" href="#/login/">Log In</a>
             </li> 
             <li className="nav-item" id="logoutLink" style={{display: 'none'}}>
-              <a className="nav-link cursor-pointer fw-bold text-danger" onClick={handleLogout}>Log Out</a>
+              <a className="nav-link cursor-pointer fw-bold" onClick={handleLogout}>Log Out</a>
             </li>
           </ul>
         </div>
         <div className="float-end">
-          <span className="fw-bold mt-1" id="loggedInStatus">No User</span>
+          <span className="fw-bold mt-1 text-white" id="loggedInStatus">No User</span>
         </div>
       </div>
     </nav>

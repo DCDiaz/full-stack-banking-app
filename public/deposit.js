@@ -2,7 +2,7 @@ function Deposit() {
   const [show, setShow]     = React.useState(true);
   const [status, setStatus] = React.useState('');  
 
-  return (
+  return (<>
     <Card
       txtcolor="black"
       header="Deposit Funds"
@@ -11,6 +11,7 @@ function Deposit() {
         <DepositForm setShow={setShow} setStatus={setStatus}/> :
         <DepositMsg setShow={setShow} setStatus={setStatus}/>}
     />
+  </>
   )
 }
 
@@ -29,11 +30,23 @@ function DepositMsg(props) {
 } 
 
 function DepositForm(props) {
-  
   const ctx = React.useContext(UserContext);  
-
-  const [email, setEmail]   = React.useState(ctx.user.email);
+  const email = ctx.user.email;
   const [amount, setAmount] = React.useState('');
+  const [balance, setBalance] = React.useState(0); 
+
+  fetch(`/account/findOne/${email}`)
+  .then(response => response.text())
+  .then(text => {
+      try {
+          const data = JSON.parse(text);
+          setBalance(data.balance);
+          console.log('JSON:', data);
+      } catch(err) {
+          props.setStatus(text)
+          console.log('err:', text);
+      }
+  });
 
   function handle() {
     fetch(`/account/update/${email}/${amount}`)
@@ -52,12 +65,7 @@ function DepositForm(props) {
   }
 
   return(<>
-
-    {/*Email<br/>
-    <input type="input" 
-      className="form-control" 
-      placeholder="Enter email" 
-    value={email} onChange={e => setEmail(e.currentTarget.value)}/><br/>*/}
+    <h5>Current balance: ${parseFloat(balance).toFixed(2)}</h5>
       
     Deposit Amount<br/>
     <input type="number" 
@@ -68,6 +76,5 @@ function DepositForm(props) {
     <button type="submit" 
       className="btn btn-light" 
       onClick={handle}>Deposit</button>
-
   </>);
 }
